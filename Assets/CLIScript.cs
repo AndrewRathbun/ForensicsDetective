@@ -7,13 +7,15 @@ using TMPro;
 
 
 public class CLIScript : MonoBehaviour{
-	public string consoleDisplay;
-	public GameObject inputField;
-	public GameObject textDisplay;
+	public GameObject inputFieldText;
+	public GameObject consoleDisplay;
+	List<string> textArray = new List<string>();
 
 	public void showText(){
-		consoleDisplay = inputField.GetComponent<TMP_Text>().text;
-		textDisplay.GetComponent<TMP_Text>().text = ">"+consoleDisplay;
+		string temp = inputFieldText.GetComponent<TMP_Text>().text + "\n";
+		textArray.Add(temp);
+
+		consoleDisplay.GetComponent<TMP_Text>().text += ">"+temp;
 	}
 	public void loadDesktop(){
     	SceneManager.LoadScene("MainDesktop");
