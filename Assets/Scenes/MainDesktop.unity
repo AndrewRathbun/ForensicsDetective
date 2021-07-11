@@ -505,12 +505,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66dc8bbf5b46b01408df6ac2132c4c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileNames: []
-  fileExtensions: []
-  fileSize: []
-  filePath: []
-  fileDate: []
-  fileContent: []
 --- !u!4 &317074698
 Transform:
   m_ObjectHideFlags: 0
