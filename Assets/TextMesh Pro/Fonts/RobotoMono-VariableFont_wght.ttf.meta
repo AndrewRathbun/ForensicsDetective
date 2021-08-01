@@ -11,8 +11,7 @@ TrueTypeFontImporter:
   fontName: Roboto Mono
   fontNames:
   - Roboto Mono
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: dd68014e886c15a43971ae820d4afb65, type: 3}
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

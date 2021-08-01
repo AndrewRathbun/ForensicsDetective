@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!28 &-4862408984724379186
+--- !u!28 &-4180344296950257313
 Texture2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Name: SquadaOne-Regular SDF
   m_EditorClassIdentifier: 
   hashCode: -1556756207
-  material: {fileID: 3515394230598238307}
+  material: {fileID: 2682803366458043427}
   materialHashCode: 714662161
   m_Version: 1.1.0
   m_SourceFontFileGUID: 6df175877f0fb5f43929a5efdf48c169
@@ -1778,7 +1778,7 @@ MonoBehaviour:
     m_GlyphIndex: 96
     m_Scale: 1
   m_AtlasTextures:
-  - {fileID: -4862408984724379186}
+  - {fileID: -4180344296950257313}
   m_AtlasTextureIndex: 0
   m_IsMultiAtlasTexturesEnabled: 0
   m_ClearDynamicDataOnBuild: 0
@@ -2483,7 +2483,7 @@ MonoBehaviour:
   boldSpacing: 7
   italicStyle: 35
   tabSize: 10
---- !u!21 &3515394230598238307
+--- !u!21 &2682803366458043427
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2492,7 +2492,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: SquadaOne-Regular SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ShaderKeywords: UNDERLAY_ON
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -2515,7 +2515,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: -4862408984724379186}
+        m_Texture: {fileID: -4180344296950257313}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineTex:
@@ -2567,8 +2567,8 @@ Material:
     - _TextureHeight: 512
     - _TextureWidth: 512
     - _UnderlayDilate: 0
-    - _UnderlayOffsetX: 0.5
-    - _UnderlayOffsetY: -0.5
+    - _UnderlayOffsetX: 0
+    - _UnderlayOffsetY: 0
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
@@ -2584,4 +2584,4 @@ Material:
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UnderlayColor: {r: 0.06697223, g: 0.19858046, b: 0.3301887, a: 1}
+    - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
