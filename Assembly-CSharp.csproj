@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\PlayerPrefsX.cs" />
      <Compile Include="Assets\Scripts\CLIScript.cs" />
      <Compile Include="Assets\Scripts\FileSelect.cs" />
      <Compile Include="Assets\Scripts\FileSelectElement.cs" />

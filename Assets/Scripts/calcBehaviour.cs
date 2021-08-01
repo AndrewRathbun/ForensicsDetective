@@ -1,38 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class calcBehaviour : MonoBehaviour
 {
-    Toggle md4Toggle, md5Toggle, sha1Toggle, sha256Toggle, sha512Toggle, panamaToggle, tigerToggle, crc32Toggle, allToggle;
-    TMP_Text md4Lbl, md5Lbl, sha1Lbl, sha256Lbl, sha512Lbl, panamaLbl, tigerLbl, crc32Lbl, allLbl;
+    Toggle md5Toggle, sha1Toggle, sha256Toggle, sha512Toggle, allToggle;
+    TMP_Text md5Lbl, sha1Lbl, sha256Lbl, sha512Lbl, allLbl;
+    public GameObject md5OutputField, sha1OutputField, sha256OutputField, sha512OutputField;
+    static TMP_Text filePrint;
     public GameObject fileUI;
+    string[] fileArray;
 
     // Start is called before the first frame update
     void Start()
     {
-        md4Toggle = GameObject.Find("md4Toggle").GetComponent<Toggle>();
         md5Toggle = GameObject.Find("md5Toggle").GetComponent<Toggle>();
         sha1Toggle = GameObject.Find("sha1Toggle").GetComponent<Toggle>();
         sha256Toggle = GameObject.Find("sha256Toggle").GetComponent<Toggle>();
         sha512Toggle = GameObject.Find("sha512Toggle").GetComponent<Toggle>();
-        panamaToggle = GameObject.Find("panamaToggle").GetComponent<Toggle>();
-        tigerToggle = GameObject.Find("tigerToggle").GetComponent<Toggle>();
-        crc32Toggle = GameObject.Find("crc32Toggle").GetComponent<Toggle>();
         allToggle = GameObject.Find("allToggle").GetComponent<Toggle>();
-        md4Lbl = GameObject.Find("md4Label").GetComponent<TMP_Text>();
         md5Lbl = GameObject.Find("md5Label").GetComponent<TMP_Text>();
         sha1Lbl = GameObject.Find("sha1Label").GetComponent<TMP_Text>();
         sha256Lbl = GameObject.Find("sha256Label").GetComponent<TMP_Text>();
         sha512Lbl = GameObject.Find("sha512Label").GetComponent<TMP_Text>();
-        panamaLbl = GameObject.Find("panamaLabel").GetComponent<TMP_Text>();
-        tigerLbl = GameObject.Find("tigerLabel").GetComponent<TMP_Text>();
-        crc32Lbl = GameObject.Find("crc32Label").GetComponent<TMP_Text>();
-        md4Toggle.onValueChanged.AddListener(delegate{
-            checkText(md4Toggle, md4Lbl);
-        });
+        filePrint = GameObject.Find("fileNamePrint").GetComponent<TMP_Text>();
         md5Toggle.onValueChanged.AddListener(delegate{
             checkText(md5Toggle, md5Lbl);
         });
@@ -45,24 +40,9 @@ public class calcBehaviour : MonoBehaviour
         sha512Toggle.onValueChanged.AddListener(delegate{
             checkText(sha512Toggle, sha512Lbl);
         });
-        panamaToggle.onValueChanged.AddListener(delegate{
-            checkText(panamaToggle, panamaLbl);
-        });
-        tigerToggle.onValueChanged.AddListener(delegate{
-            checkText(tigerToggle, tigerLbl);
-        });
-        crc32Toggle.onValueChanged.AddListener(delegate{
-            checkText(crc32Toggle, crc32Lbl);
-        });
         allToggle.onValueChanged.AddListener(delegate{
             allChanged(allToggle);
         });
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void allChanged(Toggle allT){
@@ -74,24 +54,16 @@ public class calcBehaviour : MonoBehaviour
         }
     }
     void allOn(){
-        md4Toggle.isOn = true;
         md5Toggle.isOn = true;
         sha1Toggle.isOn = true;
         sha256Toggle.isOn = true;
         sha512Toggle.isOn = true;
-        panamaToggle.isOn = true;
-        tigerToggle.isOn = true;
-        crc32Toggle.isOn = true;
     }
     void allOff(){
-        md4Toggle.isOn = false;
         md5Toggle.isOn = false;
         sha1Toggle.isOn = false;
         sha256Toggle.isOn = false;
         sha512Toggle.isOn = false;
-        panamaToggle.isOn = false;
-        tigerToggle.isOn = false;
-        crc32Toggle.isOn = false;
     }
     void checkText(Toggle changedT, TMP_Text changedL){
         if(changedT.isOn){
@@ -103,5 +75,82 @@ public class calcBehaviour : MonoBehaviour
     }
     public void showFileSelect(){
     	fileUI.SetActive(true);
+    }
+    public static void printFile(){
+        string[] fileInfo = PlayerPrefsX.GetStringArray("chosenHashFile");
+        filePrint.text = fileInfo[0];
+        filePrint.color = new Color32(0,0,0,255);
+        filePrint.fontStyle = FontStyles.Normal;
+    }
+    public void startHash(){
+        fileArray = PlayerPrefsX.GetStringArray("chosenHashFile");
+        if(md5Toggle.isOn){
+            md5OutputField.GetComponent<TMP_InputField>().text = md5Hash(fileArray[0]);
+        }
+        else{
+            md5OutputField.GetComponent<TMP_InputField>().text = "";
+        }
+        if(sha1Toggle.isOn){
+            sha1OutputField.GetComponent<TMP_InputField>().text = sha1Hash(fileArray[0]);
+        }
+        else{
+            sha1OutputField.GetComponent<TMP_InputField>().text = "";
+        }
+        if(sha256Toggle.isOn){
+            sha256OutputField.GetComponent<TMP_InputField>().text = sha256Hash(fileArray[0]);
+        }
+        else{
+            sha256OutputField.GetComponent<TMP_InputField>().text = "";
+        }
+        if(sha512Toggle.isOn){
+            sha512OutputField.GetComponent<TMP_InputField>().text = sha512Hash(fileArray[0]);
+        }
+        else{
+            sha512OutputField.GetComponent<TMP_InputField>().text = "";
+        }
+    }
+    string md5Hash(string inputFile){
+        using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider()){
+            var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(inputFile));
+            var sb = new StringBuilder(hash.Length * 2);
+
+            foreach (byte b in hash){
+                sb.Append(b.ToString("X2"));
+            }
+            return sb.ToString();
+        }
+    }
+    string sha1Hash(string inputFile){
+        using (SHA1Managed sha1 = new SHA1Managed()){
+            var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(inputFile));
+            var sb = new StringBuilder(hash.Length * 2);
+
+            foreach (byte b in hash){
+                sb.Append(b.ToString("X2"));
+            }
+            return sb.ToString();
+        }
+    }
+    string sha256Hash(string inputFile){
+        using (SHA256Managed sha256 = new SHA256Managed()){
+            var hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(inputFile));
+            var sb = new StringBuilder(hash.Length * 2);
+
+            foreach (byte b in hash){
+                sb.Append(b.ToString("X2"));
+            }
+            return sb.ToString();
+        }
+    }
+    string sha512Hash(string inputFile){
+        using (SHA512Managed sha512 = new SHA512Managed()){
+            var hash = sha512.ComputeHash(Encoding.UTF8.GetBytes(inputFile));
+            var sb = new StringBuilder(hash.Length * 2);
+
+            foreach (byte b in hash){
+                sb.Append(b.ToString("X2"));
+            }
+            return sb.ToString();
+        }
     }
 }

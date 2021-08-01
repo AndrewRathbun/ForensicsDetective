@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class FileSelect : MonoBehaviour
 {
     [SerializeField]
     private GameObject fileSelectTemplate;
-    public List<GameObject> fileList = new List<GameObject>();
+    public string[] fileArray;
     public GameObject fileUI;
-
+    private GameObject selectedButton;
     public void Start()
     {
         for(int i = 1; i <= 30; i++){
@@ -18,17 +19,15 @@ public class FileSelect : MonoBehaviour
             filePanel.SetActive(true);
             filePanel.GetComponent<FileSelectElement>().setTMP("File #"+i, "5"+i+" GB");
             filePanel.transform.SetParent(fileSelectTemplate.transform.parent, false);
-            addToFileList(filePanel);
         }
     }
-    public void addToFileList(GameObject fileElement){
-        Debug.Log("got to here"+fileElement);
-        
-        fileList.Add(fileElement);
-        Debug.Log(fileList.Count);
-    }
     public void chooseFile(){
-        Debug.Log(fileList.Count);
+        selectedButton = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject;
+        string fileName = selectedButton.GetComponent<FileSelectElement>().fileInfo.text;
+        string fileSize = selectedButton.GetComponent<FileSelectElement>().fileSize.text;
+        fileArray = new string[]{fileName, fileSize};
+        PlayerPrefsX.SetStringArray("chosenHashFile", fileArray);
         fileUI.SetActive(false);
+        calcBehaviour.printFile();
     }
 }
