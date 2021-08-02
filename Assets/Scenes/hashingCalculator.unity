@@ -1977,7 +1977,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1512582748}
+      - m_Target: {fileID: 883018330}
         m_MethodName: showFileSelect
         m_Mode: 1
         m_Arguments:
@@ -2753,7 +2753,6 @@ GameObject:
   - component: {fileID: 718443689}
   - component: {fileID: 718443688}
   - component: {fileID: 718443687}
-  - component: {fileID: 718443690}
   m_Layer: 5
   m_Name: fileSelectScrollList
   m_TagString: Untagged
@@ -2849,21 +2848,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718443685}
   m_CullTransparentMesh: 0
---- !u!114 &718443690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718443685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7acd55b805c8af46bac47bf69ff0061, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fileSelectTemplate: {fileID: 1622309951}
-  fileArray: []
-  fileUI: {fileID: 0}
 --- !u!1 &724211154
 GameObject:
   m_ObjectHideFlags: 0

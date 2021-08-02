@@ -1,14 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class GameFile : MonoBehaviour
+[Serializable]
+public class GameFile
 {
 
     //Variable declarations
-    private string fname, fextension, fsize, fpath, fdate, fcontent;
-    private string fhex, fstrings, fmetadata;
+    public string fname, fextension, fsize, fpath, fdate, fcontent;
+    public string fhex, fstrings, fmetadata;
 
     //File object constructors
     public GameFile(string fileName, string fileExtension, string fileSize, string filePath, string fileDate, string fileContent, string fileHex, string fileStrings, string fileMetaData){

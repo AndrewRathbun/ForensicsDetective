@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System.IO;
+using System.Text;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +9,9 @@ public class GenerateFile : MonoBehaviour
 
     const int fileCount = 10;
 
-    List<GameFile> files = new List<GameFile>();
+    GameFile[] files = new GameFile[fileCount];
+    
+    static string path;
 
     List<string> nameArray = new List<string>{"notAVirus", "Valorant", "Gooqle"};
     List<string> extensionArray = new List<string>{".exe", ".mp4", ".bin"};
@@ -20,6 +24,9 @@ public class GenerateFile : MonoBehaviour
     List<string> metaDataArray = new List<string>{"meta A", "meta B", "meta C"};
 
     string[] spacename = new string[fileCount];
+    string[] spaceLoaded;
+    string serializedSpace;
+    GameFileCollection fileCollection;
 
     public GameFile createFile(int value){
         GameFile temp = new GameFile(
@@ -33,38 +40,30 @@ public class GenerateFile : MonoBehaviour
             stringsArray[Random.Range(0, stringsArray.Count - 1)],
             metaDataArray[Random.Range(0, metaDataArray.Count - 1)]
         );
-
         spacename[value] = JsonUtility.ToJson(temp);
-        Debug.Log(temp);
-
         return temp;
     }
-
-    // Start is called before the first frame update
     void Start()
-    {  
+    { 
+        path = Application.dataPath + "/save.txt";
         for (int i = 0; i < fileCount; i++)
         {
-            files.Add(createFile(i));
-            //Debug.Log(spacename[i]);
+            createFile(i);
         }
-
-        for (int i = 0; i < files.Count; i++)
-        {
-            //Debug.Log(files[i].getGameFileName());
-        }
-
-        // for(int i = 0; i < spacename.Length; i++){
-        //     spacename[i] = JsonUtility.ToJson(files[i]);
-        //     Debug.Log(spacename[i]);
-        // }
-
-
+        fileCollection = new GameFileCollection(spacename);
+        serializedSpace = JsonUtility.ToJson(fileCollection);
+        saveFiles(spacename);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void saveFiles(string[] fileArray){
+        File.WriteAllText(path, serializedSpace);
+    }
+    public static string[] loadFiles(){
+        string[] outFiles = new string[]{""};
+        if(File.Exists(path)){
+            string saveString = File.ReadAllText(path);
+            GameFileCollection fileOut = JsonUtility.FromJson<GameFileCollection>(saveString);
+            outFiles = fileOut.fileCollection;
+        }
+        return outFiles;
     }
 }

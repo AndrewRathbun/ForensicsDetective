@@ -180,7 +180,7 @@ MonoBehaviour:
   m_text: Hash
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d9f3d178b6f2614e94e2ba08a16b22f, type: 2}
-  m_sharedMaterial: {fileID: -3825058218228232683, guid: 1d9f3d178b6f2614e94e2ba08a16b22f,
+  m_sharedMaterial: {fileID: 1224311988718175635, guid: 1d9f3d178b6f2614e94e2ba08a16b22f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -472,7 +472,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 317074698}
-  - component: {fileID: 317074697}
   - component: {fileID: 317074696}
   m_Layer: 0
   m_Name: Scripts
@@ -491,18 +490,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 121707e7da872634cbf818e768d44c59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &317074697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317074695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66dc8bbf5b46b01408df6ac2132c4c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &317074698
@@ -578,7 +565,7 @@ MonoBehaviour:
   m_text: Autopsy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d9f3d178b6f2614e94e2ba08a16b22f, type: 2}
-  m_sharedMaterial: {fileID: -3825058218228232683, guid: 1d9f3d178b6f2614e94e2ba08a16b22f,
+  m_sharedMaterial: {fileID: 1224311988718175635, guid: 1d9f3d178b6f2614e94e2ba08a16b22f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -925,7 +912,7 @@ MonoBehaviour:
   m_text: SANS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d9f3d178b6f2614e94e2ba08a16b22f, type: 2}
-  m_sharedMaterial: {fileID: -3825058218228232683, guid: 1d9f3d178b6f2614e94e2ba08a16b22f,
+  m_sharedMaterial: {fileID: 1224311988718175635, guid: 1d9f3d178b6f2614e94e2ba08a16b22f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1142,7 +1129,7 @@ GameObject:
   - component: {fileID: 782595125}
   - component: {fileID: 782595124}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: hashCalcButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1210,7 +1197,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 782595125}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1494621133}
+        m_MethodName: loadHashCalc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &782595125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1383,7 +1381,7 @@ MonoBehaviour:
   m_text: CLI
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d9f3d178b6f2614e94e2ba08a16b22f, type: 2}
-  m_sharedMaterial: {fileID: -3825058218228232683, guid: 1d9f3d178b6f2614e94e2ba08a16b22f,
+  m_sharedMaterial: {fileID: 1224311988718175635, guid: 1d9f3d178b6f2614e94e2ba08a16b22f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1900,7 +1898,7 @@ MonoBehaviour:
   m_text: Dec 31 23:59
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d9f3d178b6f2614e94e2ba08a16b22f, type: 2}
-  m_sharedMaterial: {fileID: -3825058218228232683, guid: 1d9f3d178b6f2614e94e2ba08a16b22f,
+  m_sharedMaterial: {fileID: 1224311988718175635, guid: 1d9f3d178b6f2614e94e2ba08a16b22f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2105,7 +2103,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0.00012207031, y: 0}
   m_SizeDelta: {x: 0.00012207031, y: 0.000061035156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1506904969
@@ -2614,7 +2612,7 @@ MonoBehaviour:
   m_text: FTK
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d9f3d178b6f2614e94e2ba08a16b22f, type: 2}
-  m_sharedMaterial: {fileID: -3825058218228232683, guid: 1d9f3d178b6f2614e94e2ba08a16b22f,
+  m_sharedMaterial: {fileID: 1224311988718175635, guid: 1d9f3d178b6f2614e94e2ba08a16b22f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

@@ -82,6 +82,7 @@ public class calcBehaviour : MonoBehaviour
         filePrint.color = new Color32(0,0,0,255);
         filePrint.fontStyle = FontStyles.Normal;
     }
+    #region hasingFunctions
     public void startHash(){
         fileArray = PlayerPrefsX.GetStringArray("chosenHashFile");
         if(md5Toggle.isOn){
@@ -153,4 +154,5 @@ public class calcBehaviour : MonoBehaviour
             return sb.ToString();
         }
     }
+    #endregion
 }

@@ -10,14 +10,17 @@ public class FileSelect : MonoBehaviour
     [SerializeField]
     private GameObject fileSelectTemplate;
     public string[] fileArray;
+    string[] loadedFiles;
     public GameObject fileUI;
     private GameObject selectedButton;
     public void Start()
     {
-        for(int i = 1; i <= 30; i++){
+        loadedFiles = GenerateFile.loadFiles();
+        for(int i = 0; i < loadedFiles.Length; i++){
+            GameFile fileToPrint = JsonUtility.FromJson<GameFile>(loadedFiles[i]);
             GameObject filePanel = Instantiate(fileSelectTemplate) as GameObject;
             filePanel.SetActive(true);
-            filePanel.GetComponent<FileSelectElement>().setTMP("File #"+i, "5"+i+" GB");
+            filePanel.GetComponent<FileSelectElement>().setTMP(fileToPrint.getGameFileName(), fileToPrint.getGameFileSize());
             filePanel.transform.SetParent(fileSelectTemplate.transform.parent, false);
         }
     }
