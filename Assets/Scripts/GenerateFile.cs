@@ -22,6 +22,8 @@ public class GenerateFile : MonoBehaviour
     List<string> hexArray = new List<string>{"0x1111", "0x2222", "0x3333"};
     List<string> stringsArray = new List<string>{"a b c", "hello world", "injector"};
     List<string> metaDataArray = new List<string>{"meta A", "meta B", "meta C"};
+    bool malicious;
+    List<string> permissionsArray = new List<string>{"r--", "rw-", "r-x", "-w-", "--x", "-wx", "rwx", "---"};
 
     string[] spacename = new string[fileCount];
     string[] spaceLoaded;
@@ -38,7 +40,9 @@ public class GenerateFile : MonoBehaviour
             contentArray[Random.Range(0, contentArray.Count - 1)],
             hexArray[Random.Range(0, hexArray.Count - 1)],
             stringsArray[Random.Range(0, stringsArray.Count - 1)],
-            metaDataArray[Random.Range(0, metaDataArray.Count - 1)]
+            metaDataArray[Random.Range(0, metaDataArray.Count - 1)],
+            malicious = (Random.Range(0,2) == 1),
+            permissionsArray[Random.Range(0, permissionsArray.Count - 1)]
         );
         spacename[value] = JsonUtility.ToJson(temp);
         return temp;

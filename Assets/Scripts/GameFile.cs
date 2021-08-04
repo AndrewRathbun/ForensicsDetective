@@ -8,11 +8,11 @@ public class GameFile
 {
 
     //Variable declarations
-    public string fname, fextension, fsize, fpath, fdate, fcontent;
-    public string fhex, fstrings, fmetadata;
+    public string fname, fextension, fsize, fpath, fdate, fcontent, fhex, fstrings, fmetadata, fPermissions;
+    public bool fMalicious;
 
     //File object constructors
-    public GameFile(string fileName, string fileExtension, string fileSize, string filePath, string fileDate, string fileContent, string fileHex, string fileStrings, string fileMetaData){
+    public GameFile(string fileName, string fileExtension, string fileSize, string filePath, string fileDate, string fileContent, string fileHex, string fileStrings, string fileMetaData, bool fileIsMalicious, string filePermissions){
         fname = fileName;
         fextension = fileExtension;
         fsize = fileSize;
@@ -22,6 +22,8 @@ public class GameFile
         fhex = fileHex;
         fstrings = fileStrings;
         fmetadata = fileMetaData;
+        fMalicious = fileIsMalicious;
+        fPermissions = filePermissions;
     }
 
     //Getters
@@ -60,16 +62,10 @@ public class GameFile
     public string getGameFileMetaData(){
         return fmetadata;
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
+    public bool getGameMalicious(){
+        return fMalicious;
+    }public string getGamePermissions(){
+        return fPermissions;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
