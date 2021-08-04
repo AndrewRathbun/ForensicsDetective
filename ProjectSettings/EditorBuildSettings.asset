@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/hashingCalculator.unity
     guid: c2ad04b5a79dcc54fb23f8e41a31668a
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: bc475f7c59b752b4ca8cdee9847408ae
   m_configObjects: {}

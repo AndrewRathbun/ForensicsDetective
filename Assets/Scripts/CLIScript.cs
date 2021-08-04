@@ -18,6 +18,7 @@ public class CLIScript : MonoBehaviour{
 		consoleDisplay.GetComponent<TMP_Text>().text += ">"+temp;
 	}
 	public void loadDesktop(){
-    	SceneManager.LoadScene("MainDesktop");
+		SceneManager.LoadScene("MainDesktop");
+		// SceneManager.SetActiveScene(SceneManager.GetSceneByName("MainDesktop"));
     }
 }

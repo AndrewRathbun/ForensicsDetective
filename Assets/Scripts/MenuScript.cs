@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    public bool hashLoaded = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,7 @@ public class MenuScript : MonoBehaviour
         
     }
     public void loadCLI(){
-    	SceneManager.LoadScene("CLI");
+        SceneManager.LoadScene("CLI");
     }
 
     public void loadAutopsy(){
