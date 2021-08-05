@@ -562,7 +562,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Autopsy
+  m_text: File Analyser
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d9f3d178b6f2614e94e2ba08a16b22f, type: 2}
   m_sharedMaterial: {fileID: 1224311988718175635, guid: 1d9f3d178b6f2614e94e2ba08a16b22f,
@@ -2066,6 +2066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3b9476ed93be8488468fe153ae453f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hashLoaded: 0
 --- !u!1 &1506904967
 GameObject:
   m_ObjectHideFlags: 0

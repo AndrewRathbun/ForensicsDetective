@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CLI.unity
     guid: c40fda474d10d674587d4bdcc1c62da0
   - enabled: 1
-    path: Assets/Scenes/Autopsy.unity
+    path: Assets/Scenes/fileAnalyser.unity
     guid: a580368e47e3c6843b8180ea9e0aebe7
   - enabled: 1
     path: Assets/Scenes/hashingCalculator.unity
