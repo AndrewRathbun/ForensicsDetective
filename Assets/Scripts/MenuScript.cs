@@ -22,7 +22,7 @@ public class MenuScript : MonoBehaviour
     }
 
     public void loadAutopsy(){
-        SceneManager.LoadScene("Autopsy");
+        SceneManager.LoadScene("fileAnalyser");
     }
     public void loadHashCalc(){
         SceneManager.LoadScene("hashingCalculator");

@@ -10,9 +10,10 @@ public class GameFile
     //Variable declarations
     public string fname, fextension, fsize, fpath, fdate, fcontent, fhex, fstrings, fmetadata, fPermissions;
     public bool fMalicious;
+    public int fID;
 
     //File object constructors
-    public GameFile(string fileName, string fileExtension, string fileSize, string filePath, string fileDate, string fileContent, string fileHex, string fileStrings, string fileMetaData, bool fileIsMalicious, string filePermissions){
+    public GameFile(string fileName, string fileExtension, string fileSize, string filePath, string fileDate, string fileContent, string fileHex, string fileStrings, string fileMetaData, bool fileIsMalicious, string filePermissions, int fileID){
         fname = fileName;
         fextension = fileExtension;
         fsize = fileSize;
@@ -24,6 +25,7 @@ public class GameFile
         fmetadata = fileMetaData;
         fMalicious = fileIsMalicious;
         fPermissions = filePermissions;
+        fID = fileID;
     }
 
     //Getters
@@ -66,6 +68,10 @@ public class GameFile
         return fMalicious;
     }public string getGamePermissions(){
         return fPermissions;
+    }
+
+    public int getGameFileID(){
+        return fID;
     }
 
 }

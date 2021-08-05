@@ -7,7 +7,7 @@ using UnityEngine;
 public class GenerateFile : MonoBehaviour
 {
 
-    const int fileCount = 10;
+    const int fileCount = 20;
 
     GameFile[] files = new GameFile[fileCount];
     
@@ -42,7 +42,8 @@ public class GenerateFile : MonoBehaviour
             stringsArray[Random.Range(0, stringsArray.Count - 1)],
             metaDataArray[Random.Range(0, metaDataArray.Count - 1)],
             malicious = (Random.Range(0,2) == 1),
-            permissionsArray[Random.Range(0, permissionsArray.Count - 1)]
+            permissionsArray[Random.Range(0, permissionsArray.Count - 1)],
+            value //id
         );
         spacename[value] = JsonUtility.ToJson(temp);
         return temp;
