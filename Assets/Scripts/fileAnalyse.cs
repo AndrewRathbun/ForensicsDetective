@@ -6,24 +6,21 @@ using TMPro;
 
 public class fileAnalyse : MonoBehaviour
 {
-
+    //Variable declarations
     [SerializeField]
     private GameObject fileAnalyseTemplate;
 
     public GameObject hexBtn, stringsBtn, metaBtn;
-
     public string[] analyseArray;
-
     string[] loadedFiles;
-
     GameObject template;
-
     public TMP_Text textField;
-
     GameFile temp;
 
+    //Start function
     void Start()
     {
+
         loadedFiles = GenerateFile.loadFiles();
 
         for(int i = 0; i < loadedFiles.Length; i++){
@@ -35,6 +32,7 @@ public class fileAnalyse : MonoBehaviour
         }
     }
 
+    //Functions to populate the InspectorView
     public void elaborate(GameObject currentTemplate){
         int ins = int.Parse(currentTemplate.GetComponent<fileAnalyseElement>().fileID.text);
         temp = JsonUtility.FromJson<GameFile>(loadedFiles[ins]);
@@ -56,10 +54,4 @@ public class fileAnalyse : MonoBehaviour
                 break;
         }
     }
-
-    // public void darken(){
-    //     Image pic = template.GetComponent<Image>();
-    //     pic.color = new Color32(100,100,100,255);
-    // }
-
 }
