@@ -121,6 +121,7 @@ public class calcBehaviour : MonoBehaviour
             return sb.ToString();
         }
     }
+
     string sha1Hash(string inputFile){
         using (SHA1Managed sha1 = new SHA1Managed()){
             var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(inputFile));
@@ -154,5 +155,5 @@ public class calcBehaviour : MonoBehaviour
             return sb.ToString();
         }
     }
-    #endregion
+    #endregion	
 }

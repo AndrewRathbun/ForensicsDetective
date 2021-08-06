@@ -24,6 +24,7 @@ public class FileSelect : MonoBehaviour
             filePanel.transform.SetParent(fileSelectTemplate.transform.parent, false);
         }
     }
+    
     public void chooseFile(){
         selectedButton = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject;
         string fileName = selectedButton.GetComponent<FileSelectElement>().fileInfo.text;
