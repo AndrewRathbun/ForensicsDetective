@@ -63,6 +63,6 @@ public class difficultySelector : MonoBehaviour
     }
 
     public void startGame(){
-        SceneManager.LoadScene("Intro");
+        SceneManager.LoadScene("gameIntro");
     }
 }

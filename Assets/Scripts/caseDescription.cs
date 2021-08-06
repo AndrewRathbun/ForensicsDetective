@@ -7,6 +7,6 @@ public class caseDescription : MonoBehaviour
 {
     public GameObject continueButton;
     public void goToGame(){
-        SceneManager.LoadScene("MainDesktop");
+        SceneManager.LoadScene("clientDesktop");
     }
 }

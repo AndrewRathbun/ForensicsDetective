@@ -53,14 +53,17 @@ public class fileAnalyze:MonoBehaviour{
 
         resetHighlight();
 
-        currentTemplate.GetComponent<fileAnalyzeElement>().fileName.color = new Color32(255, 0, 0, 255);
-        currentTemplate.GetComponent<fileAnalyzeElement>().filePath.color = new Color32(255, 0, 0, 255);
-        currentTemplate.GetComponent<fileAnalyzeElement>().fileDate.color = new Color32(255, 0, 0, 255);
-        currentTemplate.GetComponent<fileAnalyzeElement>().fileType.color = new Color32(255, 0, 0, 255);
-        currentTemplate.GetComponent<fileAnalyzeElement>().fileSize.color = new Color32(255, 0, 0, 255);
+        currentTemplate.GetComponent<fileAnalyzeElement>().fileName.color = new Color32(222, 162, 73, 255);
+        currentTemplate.GetComponent<fileAnalyzeElement>().filePath.color = new Color32(222, 162, 73, 255);
+        currentTemplate.GetComponent<fileAnalyzeElement>().fileDate.color = new Color32(222, 162, 73, 255);
+        currentTemplate.GetComponent<fileAnalyzeElement>().fileType.color = new Color32(222, 162, 73, 255);
+        currentTemplate.GetComponent<fileAnalyzeElement>().fileSize.color = new Color32(222, 162, 73, 255);
         
         if(firstBtn == 0){
             chosenElaborate(1);
+            hexBtn.GetComponent<Button>().interactable = true;
+            stringsBtn.GetComponent<Button>().interactable = true;
+            metaBtn.GetComponent<Button>().interactable = true;
             firstBtn = 1;
         }
         else{
