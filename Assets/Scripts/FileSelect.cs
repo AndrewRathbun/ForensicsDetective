@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class FileSelect : MonoBehaviour
 {
     [SerializeField]
-    private GameObject fileSelectTemplate;
+    private GameObject fileSelectTemplate = null;
     public string[] fileArray;
     string[] loadedFiles;
     public GameObject fileUI;

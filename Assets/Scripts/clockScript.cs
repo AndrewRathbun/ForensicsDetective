@@ -5,30 +5,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class clockScript : MonoBehaviour
-{
+public class clockScript:MonoBehaviour{
     //Variable Declarations
     public TMP_Text clock;
 
     //Update function
-    void Update()
-    {
+    void Update(){
         DateTime time = DateTime.Now;
         int year = time.Year;
         int month = time.Month;
         int day = time.Day;
-        int hour = time.Hour;
-        int minute = time.Minute;
-        int second = time.Second;
+        string hour = format(time.Hour);
+        string minute = format(time.Minute);
+        string second = format(time.Second);
         string ampm;
 
-        if((hour >= 12) || (hour != 24)){
+        if((int.Parse(hour) >= 12) || (int.Parse(hour) != 24)){
             ampm = "PM";
         }
         else{
             ampm = "AM";
         }
 
-        clock.text = (DateTime.Now.ToString("MMMM") + " " + day + " " + year + " " + hour%12 + ":" + minute + ":" + second + " " + ampm);
+        clock.text = (DateTime.Now.ToString("MMMM") + " " + day + " " + year + " " + (int.Parse(hour)%12) + ":" + minute + ":" + second + " " + ampm);
+    }
+
+    //Leading zero formatting function
+    string format(int str){
+        return str.ToString().PadLeft(2, '0');
     }
 }
