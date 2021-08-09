@@ -7,7 +7,7 @@ using TMPro;
 public class CLIElement : MonoBehaviour
 {
     [SerializeField]
-    public TMP_Text consoleOutput;
+    public TMP_InputField consoleOutput;
 
     public void setTMP(string cOut){
         consoleOutput.text = cOut;

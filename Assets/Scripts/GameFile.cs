@@ -8,14 +8,16 @@ public class GameFile
 {
 
     //Variable declarations
-    public string fname, fextension, fsize, fpath, fdate, fcontent, fhex, fstrings, fmetadata, fPermissions;
-    public bool fMalicious;
+    public string fname, fOwner, fextension, fTrueExtension, fsize, fpath, fdate, fcontent, fhex, fstrings, fmetadata, fPermissions;
+    public bool fMalicious, fEncoded;
     public int fID;
 
     //File object constructors
-    public GameFile(string fileName, string fileExtension, string fileSize, string filePath, string fileDate, string fileContent, string fileHex, string fileStrings, string fileMetaData, bool fileIsMalicious, string filePermissions, int fileID){
+    public GameFile(string fileName, string fileOwner, string fileExtension, string trueFileExtension, string fileSize, string filePath, string fileDate, string fileContent, string fileHex, string fileStrings, string fileMetaData, bool fileIsMalicious, string filePermissions, bool fileIsEncoded, int fileID){
         fname = fileName;
+        fOwner = fileOwner;
         fextension = fileExtension;
+        fTrueExtension = trueFileExtension;
         fsize = fileSize;
         fpath = filePath;
         fdate = fileDate;
@@ -25,6 +27,7 @@ public class GameFile
         fmetadata = fileMetaData;
         fMalicious = fileIsMalicious;
         fPermissions = filePermissions;
+        fEncoded = fileIsEncoded;
         fID = fileID;
     }
 
@@ -32,9 +35,15 @@ public class GameFile
     public string getGameFileName(){
         return fname;
     }
+    public string getGameFileOwner(){
+        return fOwner;
+    }
 
     public string getGameFileExtension(){
         return fextension;
+    }
+    public string getGameTrueFileExtension(){
+        return fTrueExtension;
     }
 
     public string getGameFileSize(){
@@ -66,8 +75,13 @@ public class GameFile
     }
     public bool getGameMalicious(){
         return fMalicious;
-    }public string getGamePermissions(){
+    }
+    public string getGamePermissions(){
         return fPermissions;
+    }
+
+    public bool getGameEncoded(){
+        return fEncoded;
     }
 
     public int getGameFileID(){

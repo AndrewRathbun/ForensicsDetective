@@ -14,6 +14,7 @@ public class GenerateFile : MonoBehaviour
     static string path;
 
     List<string> nameArray = new List<string>{"notAVirus", "Valorant", "Gooqle"};
+    List<string> ownerArray = new List<string>{"a, b, c"};
     List<string> extensionArray = new List<string>{".exe", ".mp4", ".bin"};
     List<string> sizeArray = new List<string>{"100 KB", "200 MB", "3 GB"};
     List<string> pathArray = new List<string>{"C:/", "D:/", "E:/"};
@@ -30,34 +31,36 @@ public class GenerateFile : MonoBehaviour
     string serializedSpace;
     GameFileCollection fileCollection;
 
-    public GameFile createFile(int value){
-        GameFile temp = new GameFile(
-            nameArray[Random.Range(0, nameArray.Count - 1)],
-            extensionArray[Random.Range(0, extensionArray.Count - 1)],
-            sizeArray[Random.Range(0, sizeArray.Count - 1)],
-            pathArray[Random.Range(0, pathArray.Count - 1)],
-            dateArray[Random.Range(0, dateArray.Count - 1)],
-            contentArray[Random.Range(0, contentArray.Count - 1)],
-            hexArray[Random.Range(0, hexArray.Count - 1)],
-            stringsArray[Random.Range(0, stringsArray.Count - 1)],
-            metaDataArray[Random.Range(0, metaDataArray.Count - 1)],
-            malicious = (Random.Range(0,2) == 1),
-            permissionsArray[Random.Range(0, permissionsArray.Count - 1)],
-            value //id
-        );
-        spacename[value] = JsonUtility.ToJson(temp);
-        return temp;
-    }
+    // public GameFile createFile(int value){
+    //     GameFile temp = new GameFile(
+    //         nameArray[Random.Range(0, nameArray.Count - 1)],
+    //         ownerArray[Random.Range(0, ownerArray.Count -1)],
+    //         extensionArray[Random.Range(0, extensionArray.Count - 1)],
+    //         sizeArray[Random.Range(0, sizeArray.Count - 1)],
+    //         pathArray[Random.Range(0, pathArray.Count - 1)],
+    //         dateArray[Random.Range(0, dateArray.Count - 1)],
+    //         contentArray[Random.Range(0, contentArray.Count - 1)],
+    //         hexArray[Random.Range(0, hexArray.Count - 1)],
+    //         stringsArray[Random.Range(0, stringsArray.Count - 1)],
+    //         metaDataArray[Random.Range(0, metaDataArray.Count - 1)],
+    //         malicious = (Random.Range(0,2) == 1),
+    //         permissionsArray[Random.Range(0, permissionsArray.Count - 1)],
+    //         value //id
+    //     );
+    //     spacename[value] = JsonUtility.ToJson(temp);
+    //     return temp;
+    // }
     void Start()
     { 
         path = Application.dataPath + "/save.txt";
-        for (int i = 0; i < fileCount; i++)
-        {
-            createFile(i);
-        }
-        fileCollection = new GameFileCollection(spacename);
-        serializedSpace = JsonUtility.ToJson(fileCollection);
-        saveFiles(spacename);
+        // for (int i = 0; i < fileCount; i++)
+        // {
+        //     createFile(i);
+        // }
+        // fileCollection = new GameFileCollection(spacename);
+        // serializedSpace = JsonUtility.ToJson(fileCollection);
+        // saveFiles(spacename);
+        loadFiles();
     }
     void saveFiles(string[] fileArray){
         File.WriteAllText(path, serializedSpace);
