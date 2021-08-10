@@ -87,5 +87,8 @@ public class GameFile
     public int getGameFileID(){
         return fID;
     }
+    public string ToString(){
+        return fname+fOwner+fextension+fTrueExtension+fsize+fpath+fdate+fcontent+fhex+fstrings+fmetadata+fMalicious+fPermissions+fEncoded+fID;
+    }
 
 }

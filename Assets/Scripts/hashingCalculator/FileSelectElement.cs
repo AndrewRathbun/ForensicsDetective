@@ -6,12 +6,11 @@ using TMPro;
 public class FileSelectElement : MonoBehaviour
 {
     [SerializeField]
-    public TMP_Text fileInfo;
-    [SerializeField]
-    public TMP_Text fileSize;
+    public TMP_Text fileInfo, fileSize, fileId;
 
-    public void setTMP(string fileInfoString, string fileSizeString){
+    public void setTMP(string fileInfoString, string fileSizeString, string fileIdString){
         fileInfo.text = fileInfoString;
         fileSize.text = fileSizeString;
+        fileId.text = fileIdString;
     }
 }

@@ -20,18 +20,20 @@ public class FileSelect : MonoBehaviour
             GameFile fileToPrint = JsonUtility.FromJson<GameFile>(loadedFiles[i]);
             GameObject filePanel = Instantiate(fileSelectTemplate) as GameObject;
             filePanel.SetActive(true);
-            filePanel.GetComponent<FileSelectElement>().setTMP(fileToPrint.getGameFileName(), fileToPrint.getGameFileSize());
+            filePanel.GetComponent<FileSelectElement>().setTMP(fileToPrint.getGameFileName(), fileToPrint.getGameFileSize(), fileToPrint.getGameFileID().ToString());
             filePanel.transform.SetParent(fileSelectTemplate.transform.parent, false);
         }
     }
     
     public void chooseFile(){
         selectedButton = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject;
-        string fileName = selectedButton.GetComponent<FileSelectElement>().fileInfo.text;
-        string fileSize = selectedButton.GetComponent<FileSelectElement>().fileSize.text;
-        fileArray = new string[]{fileName, fileSize};
-        PlayerPrefsX.SetStringArray("chosenHashFile", fileArray);
+        // string fileName = selectedButton.GetComponent<FileSelectElement>().fileInfo.text;
+        // string fileSize = selectedButton.GetComponent<FileSelectElement>().fileSize.text;
+        // fileArray = new string[]{fileName, fileSize};
+        // PlayerPrefsX.SetStringArray("chosenHashFile", fileArray);
+        string fileId = selectedButton.GetComponent<FileSelectElement>().fileId.text;
+        PlayerPrefs.SetString("chosenFileId", fileId);
         fileUI.SetActive(false);
-        calcBehaviour.printFile();
+        calcBehaviour.callPrint();
     }
 }

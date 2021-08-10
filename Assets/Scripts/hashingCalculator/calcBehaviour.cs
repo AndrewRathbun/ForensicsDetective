@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
@@ -13,7 +14,8 @@ public class calcBehaviour : MonoBehaviour
     public GameObject md5OutputField, sha1OutputField, sha256OutputField, sha512OutputField;
     static TMP_Text filePrint;
     public GameObject fileUI;
-    string[] fileArray;
+    static GameFile selectedFile;
+    string[] loadedFiles;
 
     // Start is called before the first frame update
     void Start()
@@ -76,35 +78,53 @@ public class calcBehaviour : MonoBehaviour
     public void showFileSelect(){
     	fileUI.SetActive(true);
     }
+    public static void callPrint(){
+        printFile();
+    }
     public static void printFile(){
-        string[] fileInfo = PlayerPrefsX.GetStringArray("chosenHashFile");
-        filePrint.text = fileInfo[0];
+        string fileInfo = PlayerPrefs.GetString("chosenFileId");
+        int selectedFileId = Int32.Parse(PlayerPrefs.GetString("chosenFileId"));
+        string[] newLoadedFiles = GenerateFile.loadFiles();
+        for(int i = 0; i < newLoadedFiles.Length; i++){
+            GameFile fileToPrint = JsonUtility.FromJson<GameFile>(newLoadedFiles[i]);
+            if(fileToPrint.getGameFileID().ToString() == selectedFileId.ToString()){
+                selectedFile = fileToPrint;
+            }
+        }
+        filePrint.text = selectedFile.getGameFileName();
         filePrint.color = new Color32(0,0,0,255);
         filePrint.fontStyle = FontStyles.Normal;
     }
-    #region hasingFunctions
+    #region hashingFunctions
     public void startHash(){
-        fileArray = PlayerPrefsX.GetStringArray("chosenHashFile");
+        int selectedFileId = Int32.Parse(PlayerPrefs.GetString("chosenFileId"));
+        loadedFiles = GenerateFile.loadFiles();
+        for(int i = 0; i < loadedFiles.Length; i++){
+            GameFile fileToPrint = JsonUtility.FromJson<GameFile>(loadedFiles[i]);
+            if(fileToPrint.getGameFileID().ToString() == selectedFileId.ToString()){
+                selectedFile = fileToPrint;
+            }
+        }
         if(md5Toggle.isOn){
-            md5OutputField.GetComponent<TMP_InputField>().text = md5Hash(fileArray[0]);
+            md5OutputField.GetComponent<TMP_InputField>().text = md5Hash(selectedFile.ToString());
         }
         else{
             md5OutputField.GetComponent<TMP_InputField>().text = "";
         }
         if(sha1Toggle.isOn){
-            sha1OutputField.GetComponent<TMP_InputField>().text = sha1Hash(fileArray[0]);
+            sha1OutputField.GetComponent<TMP_InputField>().text = sha1Hash(selectedFile.ToString());
         }
         else{
             sha1OutputField.GetComponent<TMP_InputField>().text = "";
         }
         if(sha256Toggle.isOn){
-            sha256OutputField.GetComponent<TMP_InputField>().text = sha256Hash(fileArray[0]);
+            sha256OutputField.GetComponent<TMP_InputField>().text = sha256Hash(selectedFile.ToString());
         }
         else{
             sha256OutputField.GetComponent<TMP_InputField>().text = "";
         }
         if(sha512Toggle.isOn){
-            sha512OutputField.GetComponent<TMP_InputField>().text = sha512Hash(fileArray[0]);
+            sha512OutputField.GetComponent<TMP_InputField>().text = sha512Hash(selectedFile.ToString());
         }
         else{
             sha512OutputField.GetComponent<TMP_InputField>().text = "";
