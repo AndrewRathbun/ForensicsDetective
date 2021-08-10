@@ -41,7 +41,7 @@ public class fileAnalyze:MonoBehaviour{
         void resetHighlight(){
             GameObject parentGameObject = GameObject.Find("DirectoryContent");
             List<GameObject> childGameObjects = new List<GameObject>();
-            int numOfFiles = 20;
+            int numOfFiles = 24;
             for(int i = 0; i <= numOfFiles; i++){
                 parentGameObject.transform.GetChild(i).gameObject.GetComponent<fileAnalyzeElement>().fileName.color = new Color32(230, 230, 230, 255);
                 parentGameObject.transform.GetChild(i).gameObject.GetComponent<fileAnalyzeElement>().filePath.color = new Color32(230, 230, 230, 255);

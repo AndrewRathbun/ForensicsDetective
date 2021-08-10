@@ -52,7 +52,7 @@ public class GenerateFile : MonoBehaviour
     // }
     void Start()
     { 
-        path = Application.dataPath + "/save.txt";
+        path = Application.streamingAssetsPath + "/save.txt";
         // for (int i = 0; i < fileCount; i++)
         // {
         //     createFile(i);
