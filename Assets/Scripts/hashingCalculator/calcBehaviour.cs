@@ -91,7 +91,7 @@ public class calcBehaviour : MonoBehaviour
                 selectedFile = fileToPrint;
             }
         }
-        filePrint.text = selectedFile.getGameFileName();
+        filePrint.text = selectedFile.getGameFileName()+selectedFile.getGameFileExtension();
         filePrint.color = new Color32(0,0,0,255);
         filePrint.fontStyle = FontStyles.Normal;
     }

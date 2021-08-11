@@ -6,5 +6,7 @@ public class firstRun : MonoBehaviour
 {
     //Flags
     public static bool firstHashingCalculator = true;
+    public static bool firstCLI = true;
+    public static bool firstAnalyzer = true;
 
 }

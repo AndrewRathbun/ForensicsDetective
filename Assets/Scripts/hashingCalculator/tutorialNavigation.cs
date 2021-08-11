@@ -11,7 +11,14 @@ public class tutorialNavigation : MonoBehaviour
     public GameObject fileUI, introCanvas;
 
     void Start(){
-        if(firstRun.firstHashingCalculator == false){
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.name.Equals("hashingCalculator") && !firstRun.firstHashingCalculator){
+            introCanvas.SetActive(false);
+        }
+        else if(scene.name.Equals("commandLine") && !firstRun.firstCLI){
+            introCanvas.SetActive(false);
+        }
+        else if(scene.name.Equals("fileAnalyzer") && !firstRun.firstAnalyzer){
             introCanvas.SetActive(false);
         }
     }
@@ -37,8 +44,16 @@ public class tutorialNavigation : MonoBehaviour
         panelToShow.SetActive(true);
         navPanel.SetActive(false);
     }
-    public void finishTutorial(){
-        firstRun.firstHashingCalculator = false; //Disable hashingCalculator tutorial from running again
+    public void finishTutorial(string currentTutorial){
+        if(currentTutorial.Equals("hashCalc")){
+            firstRun.firstHashingCalculator = false; //Disable hashingCalculator tutorial from running again
+        }
+        else if(currentTutorial.Equals("cli")){
+            firstRun.firstCLI = false; //Disable CLI tutorial from running again
+        }
+        else if(currentTutorial.Equals("analyzer")){
+            firstRun.firstAnalyzer = false; //Disable CLI tutorial from running again
+        }
         navPanel = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.transform.parent.gameObject;
         navPanel.SetActive(false);
     }
