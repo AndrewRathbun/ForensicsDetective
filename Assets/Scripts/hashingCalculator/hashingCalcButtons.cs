@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using TMPro;
 
 public class hashingCalcButtons:MonoBehaviour{
-
     //Variable declarations
     public GameObject calcBtn, fileBtn;
     public TMP_Text calcBtnTMP, fileBtnTMP;
