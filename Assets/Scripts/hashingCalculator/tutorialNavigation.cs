@@ -21,6 +21,9 @@ public class tutorialNavigation : MonoBehaviour
         else if(scene.name.Equals("fileAnalyzer") && !firstRun.firstAnalyzer){
             introCanvas.SetActive(false);
         }
+        else if(scene.name.Equals("clientDesktop") && !firstRun.firstDesktop){
+            introCanvas.SetActive(false);
+        }
     }
 
     public void restartTutorial(){
@@ -52,7 +55,10 @@ public class tutorialNavigation : MonoBehaviour
             firstRun.firstCLI = false; //Disable CLI tutorial from running again
         }
         else if(currentTutorial.Equals("analyzer")){
-            firstRun.firstAnalyzer = false; //Disable CLI tutorial from running again
+            firstRun.firstAnalyzer = false; //Disable Analyzer tutorial from running again
+        }
+        else if(currentTutorial.Equals("desktop")){
+            firstRun.firstDesktop = false; //Disable dekstop tutorial from running again
         }
         navPanel = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.transform.parent.gameObject;
         navPanel.SetActive(false);
